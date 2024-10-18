@@ -75,11 +75,11 @@ async def check_all_proxies():
             proxy_status[proxy] = status
             
             if status == True:
-                await send_notification(f"Proxy {ip}:{port} is now ACTIVE.")
+                await send_notification(f"Proxy {ip}:{port} is now ACTIVE✅.")
             elif status == "authentication_failed":
                 await send_notification(f"Proxy {ip}:{port} AUTHENTICATION FAILED.")
             else:
-                await send_notification(f"Proxy {ip}:{port} is DOWN.")
+                await send_notification(f"Proxy {ip}:{port} is DOWN❌.")
         else:
             print(f"Proxy {ip}:{port} status unchanged.")  # Debug log for unchanged status
 
