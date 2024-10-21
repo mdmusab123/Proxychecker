@@ -9,7 +9,6 @@ TOKEN = ''  # Replace with your bot token
 # Define the proxy list in the format (IP, port, username, password)
 proxies = [
     ('49.0.41.6', 14852, 'REXFTP', 'REXFTP86325'),
-    ('103.35.109.22', 4040, 'REXFTP', 'REXFTP563258'),  # Wrong password for testing
     ('103.35.109.205', 1088, 'REXFTP', 'REXFTP158635'),
     ('111.221.5.150', 1088, 'REXFTP', ''),  # Empty password
     ('202.4.123.74', 1088, 'REXFTP', 'REXFTP125846'),  # Wrong password for testing
@@ -98,16 +97,16 @@ async def on_ready():
     print(f'Logged in as {client.user}')
 
     # Send "I am ready for work" to the first available text channel
-    await send_notification("I am ready for work")
+    await send_notification("Checking Proxy....")
 
     # Start the proxy checking loop
     client.loop.create_task(proxy_check_loop())
 
-# Function to check proxies every 30 seconds
+# Function to check proxies every 900 seconds
 async def proxy_check_loop():
     while True:
         await check_all_proxies()  # Run the proxy check
-        await asyncio.sleep(30)  # Wait for 30 seconds before checking again
+        await asyncio.sleep(900)  # Wait for 900 seconds before checking again
 
 # Run the bot
 client.run(TOKEN)
